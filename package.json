@@ -1,0 +1,27 @@
+{
+  "name": "gamelog",
+  "version": "1.0.0",
+  "description": "log of games",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jellyfishgh/gamelog.git"
+  },
+  "keywords": [
+    "games",
+    "log"
+  ],
+  "author": "jellyfishgh",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jellyfishgh/gamelog/issues"
+  },
+  "homepage": "https://github.com/jellyfishgh/gamelog#readme",
+  "dependencies": {
+    "iconv-lite": "^0.4.13"
+  }
+}

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="gbk"/>
+<title>game log</title>
+<link rel="stylesheet" type="text/css" href="style.css"/>
+</head>
+<body>
+<div id="logs"></div>
+<script src="format.js"></script>
+<script>
+	var url = window.location.href;
+	var game = url.split("=")[1];
+	showLog("logs",game);
+</script>
+</body>
+</html>
