@@ -12,9 +12,9 @@ let port = config.server.port,
 http.createServer((req, res) => {
     let urlObj = url.parse(req.url);
     let queryObj = query.parse(urlObj.query);
-    if (config.logurls[queryObj.game]) handler.handle(queryObj.game, req, res);
+    if (config.logurls[queryObj.game]) handler.handle(queryObj.game, config.logurls[queryObj.game], req, res);
     else {
-        let body = 'no such game log';
+        let body = 'no such game';
         res.writeHead(404, {
             'Content-Type': 'text/plain',
             'Content-Length': Buffer.byteLength(body)

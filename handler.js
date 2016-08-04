@@ -1,5 +1,5 @@
-var http = require('http');
-var iconv = require('iconv-lite');
+const fetcher = require('./fetcher');
+const formattor = require('./formattor');
 
 function format(log,type){
 	var arr = log.split(/[\s]+/);
@@ -78,7 +78,7 @@ function format(log,type){
 	return html;
 }
 
-function handle(logs, pathname, response, callback){
+function handle(game, req, res){
 	response.setHeader('Content-Type','text/javascript;charset=utf-8');
 	http.get(logs[pathname], function(res){
 		var size = 0;
@@ -100,4 +100,13 @@ function handle(logs, pathname, response, callback){
 	});
 }
 
-exports.handle = handle;
+module.exports = {
+	handle: function(game, url, req, res) {
+		fetcher.fetch(url, (err, data) => {
+			if(err) throw err;
+			formattor.format(data, (err, html) => {
+				res.write(html);
+			});
+		});
+	}
+}
