@@ -104,9 +104,9 @@ module.exports = {
 	handle: function(game, url, req, res) {
 		fetcher.fetch(url, (err, data) => {
 			if(err) throw err;
-			formattor.format(data, (err, html) => {
+			formattor.format(game, data, (err, html) => {
 				res.write(html);
 			});
 		});
 	}
-}
+};

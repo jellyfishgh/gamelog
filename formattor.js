@@ -1,3 +1,10 @@
-module.exports = function(game, data) {
-    return require(`./gameformater/${game}`)(data);
+module.exports = {
+    format: function(game, data, cb) {
+        try {
+            let formatted = require(`./gameformater/${game}`)(data);
+            cb(null, formatted);
+        } catch (e) {
+            cb(e);
+        }
+    }
 };
