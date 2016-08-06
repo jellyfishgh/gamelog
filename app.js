@@ -12,7 +12,7 @@ let port = config.server.port,
 http.createServer((req, res) => {
     let urlObj = url.parse(req.url);
     let queryObj = query.parse(urlObj.query);
-    if (config.logurls[queryObj.game]) handler.handle(queryObj.game, config.logurls[queryObj.game], req, res);
+    if (config.logurls[queryObj.game]) handler.handle(queryObj.game, req, res);
     else {
         let body = 'no such game';
         res.writeHead(404, {
@@ -23,5 +23,5 @@ http.createServer((req, res) => {
     }
 }).listen(port, host, (err) => {
     if (err) throw err;
-    console.log(`server running at ${host}:${port}`);
+    console.log(`server running at http://${host}:${port}/`);
 });
