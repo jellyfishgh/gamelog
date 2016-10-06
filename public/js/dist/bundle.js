@@ -2,36 +2,38 @@
 var fetcher = require('./fetcher');
 
 function $(id) {
-	return document.getElementById(id);
+    return document.getElementById(id);
 }
 
-fetcher.fetch('/log' + window.location.search, function(err, html){
-	if (err) {
-		alert(err);
-		$("centerDiv").style.display = "none";
-	} else {
-		$("centerDiv").style.display = "none";
-		$("myDiv").innerHTML = html;
-	}
+fetcher.fetch('/log' + window.location.search, function(err, html) {
+    if (err) {
+        alert(err);
+        $('centerDiv').style.display = 'none';
+    } else {
+        $('centerDiv').style.display = 'none';
+        $('myDiv').innerHTML = html;
+    }
 });
-
 },{"./fetcher":2}],2:[function(require,module,exports){
 module.exports = {
-	fetch: function(url, cb) {
-		var xhr = new XMLHttpRequest();
-		xhr.open("GET", url, true);
-		xhr.onload = function(event) {
-			if (xhr.readyState == 4 && xhr.status == 200) {
-				cb(null, xhr.responseText);
-			} else {
-				cb(new Error(xhr.statusText));
-			}
-		};
-		xhr.onerror = function(err) {
-			cb(err);
-		};
-		xhr.send();
-	}
+    fetch: function(url, cb) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', url, true);
+        xhr.onload = function() {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                cb(null, xhr.responseText);
+            } else {
+                console.log('A');
+                console.log(xhr.statusText);
+                cb(new Error(xhr.statusText));
+            }
+        };
+        xhr.onerror = function(err) {
+            console.log('B');
+            console.log(err);
+            cb(err);
+        };
+        xhr.send();
+    }
 };
-
 },{}]},{},[1]);

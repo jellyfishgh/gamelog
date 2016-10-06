@@ -6,6 +6,7 @@ module.exports = {
             if (xhr.readyState == 4 && xhr.status == 200) {
                 cb(null, xhr.responseText);
             } else {
+                console.log(xhr.statusText);
                 cb(new Error(xhr.statusText));
             }
         };

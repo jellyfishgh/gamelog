@@ -4,7 +4,7 @@ function $(id) {
     return document.getElementById(id);
 }
 
-fetcher.fetch('/log' + window.location.search, function(err, html){
+fetcher.fetch('/log' + window.location.search, function(err, html) {
     if (err) {
         alert(err);
         $('centerDiv').style.display = 'none';
